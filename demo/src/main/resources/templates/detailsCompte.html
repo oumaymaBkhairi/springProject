@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Détails du Compte</title>
+</head>
+<body>
+    <h1>Détails du Compte</h1>
+
+    <p><strong>ID :</strong> <span th:text="${compte.id}"></span></p>
+    <p><strong>Titulaire :</strong> <span th:text="${compte.titulaire}"></span></p>
+    <p><strong>Solde :</strong> <span th:text="${compte.solde}"></span> TND</p>
+
+    <h2>Opérations</h2>
+
+    <form th:action="@{'/depot/' + ${compte.id}}" method="post">
+        <label for="montantDepot">Dépôt :</label>
+        <input type="number" name="montant" id="montantDepot" step="0.01" required/>
+        <button type="submit">Déposer</button>
+    </form>
+
+    <form th:action="@{'/retrait/' + ${compte.id}}" method="post">
+        <label for="montantRetrait">Retrait :</label>
+        <input type="number" name="montant" id="montantRetrait" step="0.01" required/>
+        <button type="submit">Retirer</button>
+    </form>
+
+    <br/>
+    <a th:href="@{/}">Retour à la liste</a>
+</body>
+</html>

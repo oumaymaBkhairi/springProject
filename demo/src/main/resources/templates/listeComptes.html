@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Liste des Comptes</title>
+</head>
+<body>
+    <h1>Liste des Comptes</h1>
+    <a th:href="@{/ajouter}">Ajouter un compte</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Titulaire</th>
+                <th>Solde</th>
+                <th>Détails</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="compte : ${comptes}">
+                <td th:text="${compte.id}"></td>
+                <td th:text="${compte.titulaire}"></td>
+                <td th:text="${compte.solde}"></td>
+                <td>
+                    <a th:href="@{'/details/' + ${compte.id}}">Voir</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
